@@ -1,17 +1,37 @@
 public class BankAccount {
-    public static void main(String[] args) {
+    private double balance;
+    public BankAccount() {
 
     }
-    public static boolean send(BankAccount receiver, double amount){
-
+    public BankAccount(double balance) {
+        this.balance = balance;
     }
-    public static void getAmount(){
 
+    public boolean send(BankAccount receiver, double amount) {
+        if (take(amount)) {
+            receiver.put(amount);
+            return true;
+        }
+        return false;
     }
-    public static boolean take(){
 
+    public double getAmount() {
+        return balance;
     }
-    public static void put(){
 
+    public boolean take(double a) {
+
+        if ((balance >= a) && (a >= 0)) {
+
+            balance = balance - a;
+            return true;
+        }
+        return false;
+    }
+
+    public void put(double b) {
+        if (b >= 0) {
+            balance = b + balance;
+        }
     }
 }
